@@ -38,8 +38,9 @@
 <style lang="scss" scoped>
 .app-container {
   padding-top: 40px;
+  padding-bottom: 50.4px;
   //隐藏 x轴 滚动条
-  overflow-x: hidden;
+  overflow-X: hidden;
 }
 
 .v-enter {

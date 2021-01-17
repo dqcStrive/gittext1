@@ -10,42 +10,42 @@
     <!-- 九宫格 到 六宫格 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="/home/newslist">
           <span class="mui-icon mui-icon-home"></span>
-          <div class="mui-media-body">新闻资讯</div></a
-        >
+          <div class="mui-media-body">新闻资讯</div>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="#">
           <span class="mui-icon mui-icon-email"
-            ><span class="mui-badge">5</span></span
-          >
-          <div class="mui-media-body">图片分享</div></a
-        >
+            ><span class="mui-badge">5</span>
+          </span>
+          <div class="mui-media-body">图片分享</div>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="#">
           <span class="mui-icon mui-icon-chatbubble"></span>
-          <div class="mui-media-body">商品购买</div></a
-        >
+          <div class="mui-media-body">商品购买</div>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="#">
           <span class="mui-icon mui-icon-chatbubble"></span>
-          <div class="mui-media-body">留言反馈</div></a
-        >
+          <div class="mui-media-body">留言反馈</div>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="#">
           <span class="mui-icon mui-icon-chatbubble"></span>
-          <div class="mui-media-body">视频专区</div></a
-        >
+          <div class="mui-media-body">视频专区</div>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="#">
           <span class="mui-icon mui-icon-chatbubble"></span>
-          <div class="mui-media-body">联系我们</div></a
-        >
+          <div class="mui-media-body">联系我们</div>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -67,7 +67,7 @@ export default {
     getLunbotu() {
       //获取轮播图数据的方法
       this.$http
-        .get("http://api.cms.liulongbin.top/api/getlunbo")
+        .get("api/getlunbo")
         .then((result) => {
           // console.log(result.body);
           if (result.body.status === 0) {
@@ -89,16 +89,6 @@ export default {
   .mint-swipe-item {
     // & 交集选择器
     //不写为后代选择器
-    &:nth-child(1) {
-      background-color: red;
-    }
-    &:nth-child(2) {
-      background-color: blue;
-    }
-    &:nth-child(3) {
-      background-color: pink;
-    }
-
     img {
       width: 100%;
       height: 100%;
@@ -109,7 +99,7 @@ export default {
 .mui-grid-view.mui-grid-9 {
   background-color: #fff;
   border: none;
-  .mui-media-body{
+  .mui-media-body {
     font-size: 13px;
   }
 }
