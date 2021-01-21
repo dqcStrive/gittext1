@@ -1,12 +1,7 @@
 <template>
   <div>
     <!-- 这是轮播图区域 -->
-    <mt-swipe :auto="4000">
-      <!-- 在组件中，使用v-for，一定要使用:key -->
-      <mt-swipe-item v-for="item in lunbptuList" :key="item.url">
-        <img :src="item.img" alt="" />
-      </mt-swipe-item>
-    </mt-swipe>
+    <swiper :lunbotuList="lunbptuList" :isfull="true"></swiper>
     <!-- 九宫格 到 六宫格 -->
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
@@ -16,7 +11,7 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <router-link to="#">
+        <router-link to="/home/photolist">
           <span class="mui-icon mui-icon-email"
             ><span class="mui-badge">5</span>
           </span>
@@ -24,7 +19,7 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <router-link to="#">
+        <router-link to="/home/goodslist">
           <span class="mui-icon mui-icon-chatbubble"></span>
           <div class="mui-media-body">商品购买</div>
         </router-link>
@@ -53,6 +48,7 @@
 
 <script>
 import { Toast } from "mint-ui";
+import swiper from '../subcomponents/swiper.vue';
 
 export default {
   data() {
@@ -79,22 +75,16 @@ export default {
           }
         });
     },
+
   },
+  components:{
+    swiper
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.mint-swipe {
-  height: 200px;
-  .mint-swipe-item {
-    // & 交集选择器
-    //不写为后代选择器
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
+
 
 .mui-grid-view.mui-grid-9 {
   background-color: #fff;
