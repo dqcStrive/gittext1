@@ -6,8 +6,8 @@
       @after-enter="afterEnter"
     >
       <div class="ball" v-show="ballFlag" ref="ball"></div>
-    </transition>
-
+    </transition> 
+ 
     <!-- 商品轮播图去 -->
     <div class="mui-card">
       <div class="mui-card-content">
