@@ -6,8 +6,8 @@
       @after-enter="afterEnter"
     >
       <div class="ball" v-show="ballFlag" ref="ball"></div>
-    </transition> 
- 
+    </transition>
+
     <!-- 商品轮播图去 -->
     <div class="mui-card">
       <div class="mui-card-content">
@@ -27,18 +27,24 @@
             >&nbsp;销售价:
             <span class="now_price">￥{{ goodsinfo.sell_price }}</span>
           </p>
-          <p>购买数量: <numbox @getcount="getSelecttedCount" 
-          :max="goodsinfo.stock_quantity"></numbox></p>
+          <p>
+            购买数量:
+            <numbox
+              @getcount="getSelecttedCount"
+              :max="goodsinfo.stock_quantity"
+            ></numbox>
+          </p>
 
           <p>
             <mt-button type="primary" size="small">立即购买</mt-button>
             <mt-button type="danger" size="small" @click="addToShopCar"
-              >加入购物车</mt-button>
-              <!-- 分析，如何实现加入购物车时候，拿到 选择的数量 -->
-              <!-- 1，按钮属于 goodsinfo页面 ，数字属于 numbox组件 -->
-              <!-- 2，由于涉及到了父子组件的嵌套了，所以，无法直接在 goodsinfo 页面中获取到子组件数据 -->
-              <!-- 3，涉及到了，子组件向父组件传值 -->
-              <!-- 4，时间调用本质：父向子传递方法，子调用这个方法，同时 把数据当作参数  
+              >加入购物车</mt-button
+            >
+            <!-- 分析，如何实现加入购物车时候，拿到 选择的数量 -->
+            <!-- 1，按钮属于 goodsinfo页面 ，数字属于 numbox组件 -->
+            <!-- 2，由于涉及到了父子组件的嵌套了，所以，无法直接在 goodsinfo 页面中获取到子组件数据 -->
+            <!-- 3，涉及到了，子组件向父组件传值 -->
+            <!-- 4，时间调用本质：父向子传递方法，子调用这个方法，同时 把数据当作参数  
               传递给这个方法-->
           </p>
         </div>
@@ -84,7 +90,6 @@ export default {
   created() {
     this.getLunbotu();
     this.getgoodsinfo();
-
   },
   methods: {
     getLunbotu() {
@@ -115,6 +120,15 @@ export default {
     },
     addToShopCar() {
       this.ballFlag = !this.ballFlag;
+      //凭借出一个，要保存 到 store 中 car 数组的商品信息对象
+      let goodsinfo = {
+        id: this.id,
+        count: this.selectedCount,
+        price: this.goodsinfo.sell_price,
+        selectde: true,
+      };
+      //调用 store 中的 mutations 来
+      this.$store.commit('addTocar',goodsinfo);
     },
     beforeEnter(el) {
       el.style.transform = "translate(0,0)";
@@ -133,11 +147,12 @@ export default {
       //获取小球位置
       const ballPosition = this.$refs.ball.getBoundingClientRect();
       //获取 徽标位置
-      const badgePosition = document.getElementById('badge').getBoundingClientRect();
+      const badgePosition = document
+        .getElementById("badge")
+        .getBoundingClientRect();
 
       const xDist = badgePosition.left - ballPosition.left;
       const yDist = badgePosition.top - ballPosition.top;
-
 
       el.style.transform = `translate(${xDist}px, ${yDist}px)`;
       el.style.transition = "all 0.5s cubic-bezier(.4,-0.3,1,.68)";
@@ -146,10 +161,10 @@ export default {
     afterEnter(el) {
       this.ballFlag = !this.ballFlag;
     },
-    getSelecttedCount(count){
+    getSelecttedCount(count) {
       // 当子组件传递的数量到父组件的时候
       this.selectedCount = count;
-    }
+    },
   },
   components: {
     swiper,
