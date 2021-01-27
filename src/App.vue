@@ -10,7 +10,7 @@
 
     <!-- 中间的 路由 router-ciew 区域 -->
     <transition>
-      <router-view></router-view>
+      <router-view></router-view> 
     </transition>
 
     <!-- 底部 Tabbar 区域 -->
