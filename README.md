@@ -4,6 +4,8 @@
 1. git add .
 2. git commit -m "提交信息"
 3. git remote add origin https://gitee.com/dqc4588/new-object.git
+   + 修改仓库地址
+   +  git remote set-url origin URL
 4. git push -u origin master
 
 ## 制作首页App组件
